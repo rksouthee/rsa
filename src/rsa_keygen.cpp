@@ -5,7 +5,7 @@
 #include <vector>
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/random.hpp>
-#include "rks/base64.h"
+#include "base64.h"
 #include "rsa.h"
 #include "rsa_key.h"
 

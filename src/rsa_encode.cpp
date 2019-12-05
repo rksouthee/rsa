@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -5,7 +6,7 @@
 #include <tuple>
 #include <vector>
 #include <boost/multiprecision/cpp_int.hpp>
-#include "rks/base64.h"
+#include "base64.h"
 #include "rsa.h"
 #include "rsa_code.h"
 
