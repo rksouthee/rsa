@@ -112,7 +112,7 @@ has finished (there will be a message at the bottom) you can close the window.
 ### Build
 
 ```sh
-cmake --build build
+rsa>cmake --build build
 ```
 
 CMake will create the executables. When this has completed the exectuables will be in
