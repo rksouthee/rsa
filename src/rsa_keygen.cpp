@@ -5,7 +5,6 @@
 #include <vector>
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/random.hpp>
-#include "base64.h"
 #include "rsa.h"
 #include "rsa_key.h"
 
@@ -19,7 +18,7 @@ void write_key(const char* filename, const int_type& key, const int_type& n);
 int main(int argc, char** argv)
 {
     if (argc != 3) {
-        std::cerr << "Usage: rsa-keygen public_key private_key\n";
+        std::cerr << "Usage: rsa-keygen <public_key> <private_key>\n";
         return EXIT_FAILURE;
     }
 
@@ -42,15 +41,8 @@ static
 void write_key(const char* filename, const int_type& key, const int_type& n)
 {
     std::ofstream key_file(filename);
-    if (!key_file) {
-        std::cerr << "rsa-keygen: error: ";
-        std::cerr << filename << ": ";
-        std::cerr << strerror(errno) << '\n';
-        exit(EXIT_FAILURE);
-    }
-    std::vector<unsigned char> data;
-    export_bits(key, std::back_inserter(data), 8);
-    export_bits(n, std::back_inserter(data), 8);
-    rks::base64_encode(data.begin(), data.end(),
-                       std::ostream_iterator<char>(key_file));
+    if (!key_file)
+        std::cerr << "rsa-keygen: error: " << filename << ": " << strerror(errno) << '\n';
+    else
+        key_file << key << '\n' << n;
 }
