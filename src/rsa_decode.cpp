@@ -14,7 +14,7 @@ O decode(I f_i, I l_i, const int_type& key, const int_type& modulus, O f_o)
     while (f_i != l_i) {
         int_type value = *f_i++;
         value = powm(value, key, modulus);
-        *f_o++ = value.template convert_to<char>();
+        f_o = export_bits(value, f_o, 8);
     }
     return f_o;
 }

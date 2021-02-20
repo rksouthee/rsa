@@ -12,11 +12,21 @@ typedef number<cpp_int_backend<>, et_off> int_type;
 template <typename I, typename O>
 O encode(I f_i, I l_i, const int_type& key, const int_type& modulus, O f_o)
 {
-    while (f_i != l_i) {
-        int_type value = *f_i++;
+    while (l_i - f_i >= 64) {
+        int_type value;
+        import_bits(value, f_i, f_i + 64, 8);
+        value = powm(value, key, modulus);
+        *f_o++ = value;
+        f_i += 64;
+    }
+
+    if (f_i != l_i) {
+        int_type value;
+        import_bits(value, f_i, l_i, 8);
         value = powm(value, key, modulus);
         *f_o++ = value;
     }
+
     return f_o;
 }
 
