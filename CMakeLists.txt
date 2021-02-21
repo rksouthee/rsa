@@ -17,6 +17,6 @@ add_executable(rsa-decode src/rsa_decode.cpp)
 target_include_directories(rsa-decode PRIVATE include ${Boost_INCLUDE_DIRS})
 target_link_libraries(rsa-decode PRIVATE ${Boost_LIBRARIES})
 
-add_executable(tests tests/main.cpp)
+add_executable(tests tests/main.cpp tests/even.cpp)
 target_include_directories(tests PRIVATE include)
 target_link_libraries(tests PRIVATE Catch2::Catch2)
