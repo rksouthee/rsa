@@ -35,3 +35,13 @@ TEST_CASE("Multiplying using power", "[power]")
 	REQUIRE(power_semigroup(2, 10, std::multiplies<int>()) == 1024);
 	REQUIRE(power_semigroup(10, 2, std::multiplies<int>()) == 100);
 }
+
+TEST_CASE("Greatest common divisor", "[gcd]")
+{
+	REQUIRE(gcd(54, 24) == 6);
+	REQUIRE(gcd(29, 0) == 29);
+	REQUIRE(gcd(9, 28) == 1);
+	REQUIRE(gcd(42, 56) == 14);
+	REQUIRE(gcd(18, 84) == 6);
+	REQUIRE(gcd(48, 180) == 12);
+}
