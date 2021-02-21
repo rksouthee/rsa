@@ -45,3 +45,13 @@ TEST_CASE("Greatest common divisor", "[gcd]")
 	REQUIRE(gcd(18, 84) == 6);
 	REQUIRE(gcd(48, 180) == 12);
 }
+
+TEST_CASE("Miller-Rabin primality test", "[prime]")
+{
+	REQUIRE(miller_rabin_test(221, 55, 2, 174));
+	REQUIRE_FALSE(miller_rabin_test(221, 55, 2, 137));
+	REQUIRE_FALSE(miller_rabin_test(252601, 31575, 3, 85132));
+	REQUIRE(miller_rabin_test(104717ull, 26179ull, 2ull, 96152ull));
+	REQUIRE(miller_rabin_test(101089ull, 3159ull, 5ull, 5ull));
+	REQUIRE(miller_rabin_test(280001ull, 4375ull, 6ull, 105532ull));
+}
